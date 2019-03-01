@@ -25,7 +25,7 @@ def fetch_one_row_data(conn, query):
 
 # GetFormData_db_util/#GetFormNames_db_util
 def fetch_data(conn, query):
-    result = []
+    result = {}
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(query)
     raw = cursor.fetchall()
@@ -35,7 +35,7 @@ def fetch_data(conn, query):
 
 # GetFormFields_db_util
 def fetch_custom_data(conn, query, formid):
-    result = []
+    result = {}
     result["formid"] = str(formid)
     counter = 1
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)

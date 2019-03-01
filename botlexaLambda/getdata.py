@@ -51,7 +51,6 @@ def getformname(custid):
     return result
 def saveformfields(formid, fieldid, value):
     conn = make_conn()
-    #https://wtgto4k394.execute-api.us-east-1.amazonaws.com/botlexa/saveformfields?formid=14&fieldid=1&value=pankaj
     #query_cmd = "UPDATE FieldDetails SET FieldValue = 'PANKAJ' WHERE FieldMasterID = 1 AND TemplateCustomerMappingID = 14"
     query_cmd = "UPDATE FieldDetails SET FieldValue = '" + str(value) + "' WHERE " \
                 "FieldMasterID = " + strr(fieldid) + " AND TemplateCustomerMappingID = " + str(formid)
