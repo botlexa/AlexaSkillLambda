@@ -35,8 +35,7 @@ def fetch_data(conn, query):
 
 # GetFormFields_db_util
 def fetch_custom_data(conn, query, formid):
-    result = {}
-    result["formid"] = str(formid)
+    result = {"formid" : str(formid)}
     counter = 1
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(query)

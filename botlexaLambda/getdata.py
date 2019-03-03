@@ -21,7 +21,7 @@ def getformdata(formid):
     result = fetch_data(conn, query_cmd)
     conn.close()
     return result
-def getformfields(formnumber):
+def getformNumber(formnumber):
     conn = make_conn()
     TemplateCustomerMappingID = ''
 
@@ -35,13 +35,19 @@ def getformfields(formnumber):
                 " from FieldMaster WHERE TemplateMasterID = " + str(formnumber) + ";"
     # query_cmd = "INSERT INTO FieldDetails(FieldValue, FieldMasterID, TemplateCustomerMappingID) SELECT '', FieldMasterID, " + str(TemplateCustomerMappingID) + " from FieldMaster WHERE TemplateMasterID = 1;"
     result = execute_query(conn, query_cmd)
+    conn.close()
+    return TemplateCustomerMappingID
 
+def getformfields(formnumber):
+    conn = make_conn()
     query_cmd = "select FieldMasterID, FieldName from FieldMaster where TemplateMasterID" \
                 " = " + str(formnumber) + ";"
     # query_cmd = "select FieldMasterID, FieldName from FieldMaster where TemplateMasterID = 1;"
-    result = fetch_custom_data(conn, query_cmd, TemplateCustomerMappingID)
+    result = fetch_data(conn, query_cmd)
+
     conn.close()
     return result
+
 def getformname(custid):
     conn = make_conn()
     query_cmd = "select TemplateName, TemplateMasterID  from TemplateMaster where UserID = " \
