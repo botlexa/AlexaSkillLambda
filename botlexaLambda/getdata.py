@@ -59,7 +59,25 @@ def saveformfields(formid, fieldid, value):
     conn = make_conn()
     #query_cmd = "UPDATE FieldDetails SET FieldValue = 'PANKAJ' WHERE FieldMasterID = 1 AND TemplateCustomerMappingID = 14"
     query_cmd = "UPDATE FieldDetails SET FieldValue = '" + str(value) + "' WHERE " \
-                "FieldMasterID = " + strr(fieldid) + " AND TemplateCustomerMappingID = " + str(formid)
+                "FieldMasterID = " + str(fieldid) + " AND TemplateCustomerMappingID = " + str(formid)
+    execute_query(conn, query_cmd)
+    conn.close()
+    return "OK"
+def updateOperationWelcome():
+    conn = make_conn()
+    query_cmd = "update currentoperation set operationid = 0;"
+    execute_query(conn, query_cmd)
+    conn.close()
+    return "OK"
+def updateOperationFormDetails():
+    conn = make_conn()
+    query_cmd = "update currentoperation set operationid = 1;"
+    execute_query(conn, query_cmd)
+    conn.close()
+    return "OK"
+def updateOperationCompleted():
+    conn = make_conn()
+    query_cmd = "update currentoperation set operationid = 2;"
     execute_query(conn, query_cmd)
     conn.close()
     return "OK"
